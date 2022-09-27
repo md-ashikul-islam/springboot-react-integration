@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Container from './Container.js';
 import './App.css';
 import { getAllStudents } from './client.js';
-import { Table, Avatar, Spin } from 'antd';
+import { Table, Avatar, Spin, Space } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 
 const getIndicatorIcon = () => (
@@ -39,10 +39,12 @@ class App extends Component {
 
   render() {
     const { students } = this.state;
-    if (isFetching) {
+    if (this.state.isFetching) {
       return (
         <Container>
-          <Spin indicator={getIndicatorIcon()} />;
+          <Space class="spinner">
+            <Spin indicator={getIndicatorIcon()} />
+          </Space>
         </Container>
       );
     }
